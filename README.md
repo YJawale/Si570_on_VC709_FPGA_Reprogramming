@@ -12,3 +12,9 @@ My vivado block design -
 
 Note that the RTL block in the bottom was used to redirect my Si570 clock outputs to the USER SMA ports, and are not necessary to establish in your design if you dont intend to use it.
 Run bitstream and export the hardware to SDK/Vitis (I was working with Vivado 2018.3, so SDK for me), and continue with the code provided!
+
+Constraint for the Si570 clock - 
+set_property PACKAGE_PIN AK34 [get_ports clk_p_0]
+set_property PACKAGE_PIN AL34 [get_ports clk_n_0]
+set_property IOSTANDARD LVDS [get_ports clk_p_0]
+set_property IOSTANDARD LVDS [get_ports clk_n_0]
