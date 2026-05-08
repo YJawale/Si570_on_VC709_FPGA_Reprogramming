@@ -10,7 +10,7 @@ After going through this process, you'll be left with a bunch of instructions an
 Note that VC709 has the 50ppm Si570, and different variants have different register spaces to be filled. 
 Now that you have the data you need ready, you can start with first initializing a vivado block design with Microblaze, IIC and UART interface (UART just for debugging).
 My vivado block design - 
-<img width="1296" height="368" alt="image" src="https://github.com/user-attachments/assets/e50f14cf-85d7-45c5-9251-afa8bd28b2ac" />
+<img width="1817" height="600" alt="image" src="https://github.com/user-attachments/assets/bd485e51-560d-4b2c-bfc7-4bf574b4c816" />
 
 Note that the RTL block in the bottom was used to redirect my Si570 clock outputs to the USER SMA ports, and are not necessary to establish in your design if you dont intend to use it. (I have still included the RTL code and constraints for the same)
 Run bitstream and export the hardware to SDK/Vitis (I was working with Vivado 2018.3, so SDK for me), create an example application project and use 'Hello World' as template.
