@@ -16,4 +16,4 @@ Paste the uploaded code and you're done, yay!
 All libraries required will already be present with the Hello World example application, atleast it was for me, wish you the best.
 
 I had a lot of issues with the lack of documentation and decided to make this.
-Leave a like if it helped :))
+Leave a star if it helped :))
