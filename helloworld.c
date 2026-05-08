@@ -15,22 +15,21 @@ int main(void)
 {
 	  init_platform();
     u8 tx[8];
-	  u8 rx[6]={0};
-	  u8 reg_addr = 7;
     u8 open_chn = 0b00000001;
-
-	//unsigned sentt;
-	//unsigned readd;
 
   //open channel 0 on mux
     XIic_Send(IIC_BASE_ADDRESS, mux_addy, &open_chn, 1, XIIC_STOP);
 
-  //Un-comment to use for debugging
-  /*  
-    XIic_Send(IIC_BASE_ADDRESS, SI570_I2C_ADDR, &reg_addr, 1, XIIC_REPEATED_START);
-	  readd = XIic_Recv(IIC_BASE_ADDRESS, SI570_I2C_ADDR, rx, 6, XIIC_STOP);
-  	xil_printf("Code read %d registers, expected value is 6\n\r",readd);
-	  xil_printf("Recieved register values are - %x, %x, %x, %x, %x, %x \n\r",rx[0],rx[1],rx[2],rx[3],rx[4],rx[5]); //expect 0,0,0,0,0,0 since no data is loaded yet  
+  //Un-comment if you want to debug, the next 4 lines will read and print the current register values
+
+  /*
+ 	u8 rx[6] = {0};
+    u8 reg_addr = 13;
+    unsigned readd;
+  	XIic_Send(IIC_BASE_ADDRESS, SI5324_I2C_ADDR, &reg_addr, 1, XIIC_STOP);
+	readd = XIic_Recv(IIC_BASE_ADDRESS, SI5324_I2C_ADDR, rx, 6, XIIC_STOP);
+	xil_printf("Code read %d registers\n\r",readd);
+	xil_printf("Values in registers are - %x, %x, %x, %x, %x, %x \n\r",rx[0],rx[1],rx[2],rx[3],rx[4],rx[5]);//fill other registers, it does auto-increments
   */
 
   //Freeze DCO
@@ -38,7 +37,7 @@ int main(void)
     tx[1] = 0x10;
     XIic_Send(IIC_BASE_ADDRESS, SI570_I2C_ADDR, tx, 2, XIIC_STOP); //2 bytes since address and data
 
-	  tx[0] = 7; //Leave this as it is, it points to which register the data should start filling from 
+	tx[0] = 7; //Leave this as it is, it points to which register the data should start filling from 
   //the following registers are for 800MHz, change these values according to whatever the SkyWorks application tells you to.
     tx[1] = 0x60;   // reg 7
     tx[2] = 0x31;   // reg 8
@@ -50,12 +49,16 @@ int main(void)
   //send all data, it auto-increments so it autofills register 7,8,9,10,11 and 12
     XIic_Send(IIC_BASE_ADDRESS, SI570_I2C_ADDR, tx, 7, XIIC_STOP);
   
-  //Un-comment to use for debugging
+  //Un-comment if you want to debug, the next 4 lines will read and print the current register values
+
   /*
-    XIic_Send(IIC_BASE_ADDRESS, SI570_I2C_ADDR, &reg_addr, 1, XIIC_REPEATED_START);
-	  readd = XIic_Recv(IIC_BASE_ADDRESS, SI570_I2C_ADDR, rx, 6, XIIC_STOP);
-  	xil_printf("Code read %d registers, expected value is 6\n\r",readd);
-	  xil_printf("Recieved register values are - %x, %x, %x, %x, %x, %x \n\r",rx[0],rx[1],rx[2],rx[3],rx[4],rx[5]); //expect values that you loaded in the tx[] array here, if data is different, its a problem
+ 	u8 rx[6] = {0};
+    u8 reg_addr = 13;
+    unsigned readd;
+  	XIic_Send(IIC_BASE_ADDRESS, SI5324_I2C_ADDR, &reg_addr, 1, XIIC_STOP);
+	readd = XIic_Recv(IIC_BASE_ADDRESS, SI5324_I2C_ADDR, rx, 6, XIIC_STOP);
+	xil_printf("Code read %d registers\n\r",readd);
+	xil_printf("Values in registers are - %x, %x, %x, %x, %x, %x \n\r",rx[0],rx[1],rx[2],rx[3],rx[4],rx[5]);//fill other registers, it does auto-increments
   */
   
     //release unfreeze dco same way
