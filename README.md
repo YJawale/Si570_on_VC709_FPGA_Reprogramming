@@ -10,16 +10,10 @@ Now that you have the data you need ready, you can start with first initializing
 My vivado block design - 
 <img width="1296" height="368" alt="image" src="https://github.com/user-attachments/assets/e50f14cf-85d7-45c5-9251-afa8bd28b2ac" />
 
-Note that the RTL block in the bottom was used to redirect my Si570 clock outputs to the USER SMA ports, and are not necessary to establish in your design if you dont intend to use it.
+Note that the RTL block in the bottom was used to redirect my Si570 clock outputs to the USER SMA ports, and are not necessary to establish in your design if you dont intend to use it. (I have still included the RTL code and constraints for the same)
 Run bitstream and export the hardware to SDK/Vitis (I was working with Vivado 2018.3, so SDK for me), create an example application project and use 'Hello World' as template.
 Paste the uploaded code and you're done, yay!
 All libraries required will already be present with the Hello World example application, atleast it was for me, wish you the best.
-
-Constraint for the Si570 clock - 
-set_property PACKAGE_PIN AK34 [get_ports clk_p_0]
-set_property PACKAGE_PIN AL34 [get_ports clk_n_0]
-set_property IOSTANDARD LVDS [get_ports clk_p_0]
-set_property IOSTANDARD LVDS [get_ports clk_n_0]
 
 I had a lot of issues with the lack of documentation and decided to make this.
 Leave a like if it helped :))
