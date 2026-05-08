@@ -20,3 +20,6 @@ set_property PACKAGE_PIN AK34 [get_ports clk_p_0]
 set_property PACKAGE_PIN AL34 [get_ports clk_n_0]
 set_property IOSTANDARD LVDS [get_ports clk_p_0]
 set_property IOSTANDARD LVDS [get_ports clk_n_0]
+
+I had a lot of issues with the lack of documentation and decided to make this.
+Leave a like if it helped :))
