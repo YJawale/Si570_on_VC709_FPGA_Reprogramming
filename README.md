@@ -4,6 +4,8 @@ This does not cover how to generate the values that you must fill in the registe
 the skyworks document for si570 - https://www.skyworksinc.com/-/media/skyworks/sl/documents/public/data-sheets/si570-71.pdf
 software by skyworks for si570 - https://www.skyworksinc.com/en/application-pages/Programmable-Oscillator-Software
 
+The clock Si570 hides behind an 8-channel MUX (address 0x74) on 0th channel, at address 0x5D on VC709 board. Its default frequency is 156.25 MHz.
+
 After going through this process, you'll be left with a bunch of instructions and information about which register to fill with what value.
 Note that VC709 has the 50ppm Si570, and different variants have different register spaces to be filled. 
 Now that you have the data you need ready, you can start with first initializing a vivado block design with Microblaze, IIC and UART interface (UART just for debugging).
